@@ -19,7 +19,9 @@ inputs:
     description: "Directory containing Prequel product configs. Can be a glob"
     required: false
     default: 'prequel/products/*'
-
+branding:
+  icon: 'upload-cloud'
+  color: 'blue'
 runs:
   using: 'docker'
   image: 'Dockerfile'
