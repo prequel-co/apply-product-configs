@@ -1,0 +1,31 @@
+name: 'Apply Prequel Product Configs'
+description: 'Greet someone and record the time'
+inputs:
+  use_dev_cli:  
+    description: 'Use dev version of CLI. For internal Prequel use only'
+    required: true
+    default: false
+  host:  
+    description: "Host (scheme and port included) of Prequel instance. For US Cloud, use 'https://api.prequel.co/'"
+    required: true
+  api_key:  
+    description: 'Prequel API Key'
+    required: true
+  mode:  
+    description: "Can only be 'import' or 'export'"
+    required: false
+    default: 'export'
+  dir:  
+    description: "Directory containing Prequel product configs. Can be a glob"
+    required: false
+    default: 'prequel/products/*'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.use_dev_cli }}
+    - ${{ inputs.host }}
+    - ${{ inputs.api_key }}
+    - ${{ inputs.mode }}
+    - ${{ inputs.dir }}
